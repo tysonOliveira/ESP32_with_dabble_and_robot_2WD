@@ -17,8 +17,8 @@
 
 void moveForward();
 void moveBack();
-void moveLeft(uint8_t sense1[]);
-void moveRight(uint8_t sense2[]);
+void moveLeft(uint8_t direction1[]);
+void moveRight(uint8_t direction2[]);
 void stop();
 void speedUp();
 void slowDown();
@@ -115,22 +115,22 @@ void moveBack() {
   digitalWrite(IN2, HIGH);  
 }
 
-void moveLeft(uint8_t sense1[]) {
+void moveLeft(uint8_t direction1[]) {
   ledcWrite(1, speed);
-  digitalWrite(IN3, sense1[0]);       // HIGH
-  digitalWrite(IN4, sense1[1]);
+  digitalWrite(IN3, direction1[0]);       // HIGH
+  digitalWrite(IN4, direction1[1]);
   ledcWrite(0, speed);    
-  digitalWrite(IN1, sense1[2]); 
-  digitalWrite(IN2, sense1[3]); 
+  digitalWrite(IN1, direction1[2]); 
+  digitalWrite(IN2, direction1[3]); 
 }
 
-void moveRight(uint8_t sense2[]) {
+void moveRight(uint8_t direction2[]) {
   ledcWrite(1, 0);
-  digitalWrite(IN3, sense2[0]); 
-  digitalWrite(IN4, sense2[1]);
+  digitalWrite(IN3, direction2[0]); 
+  digitalWrite(IN4, direction2[1]);
   ledcWrite(0, speed);    
-  digitalWrite(IN1, sense2[2]);       // HIGH
-  digitalWrite(IN2, sense2[3]);  
+  digitalWrite(IN1, direction2[2]);       // HIGH
+  digitalWrite(IN2, direction2[3]);  
 }
 
 void stop() {
